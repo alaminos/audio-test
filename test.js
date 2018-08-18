@@ -1,24 +1,32 @@
 const ctxAudio = new (window.AudioContext || window.webkitAudioContext)()
 
 const oscillator = ctxAudio.createOscillator();
+const oscillator220 = ctxAudio.createOscillator();
 
 oscillator.type = 'triangle'; //you can change to type square, sine, etc.
-//oscillator.start(); <--- it was working, but placing the .start method within the function below is not working
+oscillator.frequency = 180;
+oscillator220.type = 'square';
+oscillator220.frequency = 220;
+
+oscillator.start(); 
+oscillator220.start();
 
 const clickableArea = document.getElementById('buttons');
 
-let connect = false;
+let osci_connect = false;
+let osci220_connect = false;
+
 clickableArea.addEventListener('click', 
     (event) => {
         let elemClicked = event.target;
-        console.log(elemClicked);
         if (elemClicked.id === 'btn_1') {
-            oscillator.frequency.value = 200;
-        } else {
-            oscillator.frequency.value = 250;
+            if (osci_connect) oscillator.disconnect(ctxAudio.destination)
+            else oscillator.connect(ctxAudio.destination);
+            osci_connect = !osci_connect;
+        } else if (elemClicked.id === 'btn_2') {
+            if (osci220_connect) oscillator220.disconnect(ctxAudio.destination)
+            else oscillator220.connect(ctxAudio.destination);
+            osci220_connect = !osci220_connect;
         }
-        oscillator.start(); // error: "InvalidStateError: An attempt was made to use an object that is not, or is no longer, usable"
-        if (connect) oscillator.disconnect(ctxAudio.destination)
-        else oscillator.connect(ctxAudio.destination);
-        connect = !connect;
+        
 });
