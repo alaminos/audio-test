@@ -1,14 +1,13 @@
 const ctxAudio = new (window.AudioContext || window.webkitAudioContext)()
 
 const oscillator = ctxAudio.createOscillator();
-const oscillator220 = ctxAudio.createOscillator();
-
 oscillator.type = 'triangle'; //you can change to type square, sine, etc.
 oscillator.frequency = 180;
+oscillator.start();
+
+const oscillator220 = ctxAudio.createOscillator();
 oscillator220.type = 'square';
 oscillator220.frequency = 220;
-
-oscillator.start(); 
 oscillator220.start();
 
 const clickableArea = document.getElementById('buttons');
