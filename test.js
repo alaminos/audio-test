@@ -10,6 +10,20 @@ oscillator220.type = 'square';
 oscillator220.frequency = 220;
 oscillator220.start();
 
+/**
+ * In order to build several oscillators:
+
+
+ Oscillator = function() {
+     this.name;
+     this.type;
+     this.frequencey;
+
+ }
+
+  * 
+ */
+
 const clickableArea = document.getElementById('buttons');
 
 let osci_connect = false;
