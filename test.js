@@ -11,12 +11,12 @@ oscillator220.frequency = 220;
 oscillator220.start();
 
 /**
- * In order to build several oscillators:
+ * In order to build several oscillators dynamically:
  * Oscillator Class
 
-??
+const oscillators = [a, b, c];
 
- Oscillator = function(type, frequency) {
+ Oscillator = function(oscillators.a, type, frequency) {
      this.name = this.newName();
      this.type = type;
      this.frequency = frequency;

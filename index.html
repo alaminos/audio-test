@@ -14,6 +14,45 @@
         <button id='btn_2'>frequency: 220</button>
     </div>
 
+    <div id='oscillators_box'>
+        <div class="oscillator" id='osc1'>
+            <select name="type_list" id="type_list">
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="sine">Sine</option>
+            </select>
+            <label for="">Frequency</label>
+            <input type="number" max="300" min="100">
+            
+            <button class="start">Start oscillator</button>
+            <button class='play'>Play</button>
+        </div>
+<!--In the future we should have a function that creates these oscillator-forms dinamically-->
+
+        <div class="oscillator" id='osc2'>
+            <select name="type_list" id="type_list">
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="sine">Sine</option>
+            </select>
+            <label for="">Frequency</label>
+            <input type="number" max="300" min="100">
+            <button class="start">Start oscillator</button>
+            <button class='play'>Play</button>
+        </div>
+        <div class="oscillator" id='osc3'>
+            <select name="type_list" id="type_list">
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+                <option value="sine">Sine</option>
+            </select>
+            <label for="">Frequency</label>
+            <input type="number" max="300" min="100">
+            <button class="start">Start oscillator</button>
+            <button class='play'>Play</button>
+        </div>
+    </div>
+
     <!--maybe a form so the user can choose frequency and type, and then programme different buttons-->
 
     <script src="test.js"></script>
