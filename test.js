@@ -12,14 +12,17 @@ oscillator220.start();
 
 /**
  * In order to build several oscillators:
+ * Oscillator Class
 
+??
 
- Oscillator = function() {
-     this.name;
-     this.type;
-     this.frequencey;
-
+ Oscillator = function(type, frequency) {
+     this.name = this.newName();
+     this.type = type;
+     this.frequency = frequency;
  }
+
+ Oscillator.prototype.newName()
 
   * 
  */
