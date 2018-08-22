@@ -1,5 +1,6 @@
 const context = new (window.AudioContext || window.webkitAudioContext)()
 
+/*
 const oscillator = context.createOscillator();
 oscillator.type = 'triangle'; //you can change to type square, sine, etc.
 oscillator.frequency = 180;
@@ -27,10 +28,9 @@ clickableArea.addEventListener('click',
             else oscillator220.connect(context.destination);
             osci220_connect = !osci220_connect;
         }
-        
 });
 
-/**
+
  * All the above is working fine, but 
  * In order to build several oscillators dynamically:
  * Oscillator Class
@@ -49,9 +49,10 @@ const oscillators = [a, b, c];
 
 const oscillators = []; //a list of potential oscillators
 
-/*user indicates type and frequency and clicks on start oscillator,
-each form belong to an oscillator, so at the end there are three arguments passed:
-oscillator container (a,b,c), type, and frequency.
+/*user fills form indicating type and frequency,
+clicks on start oscillator,
+so at the end there are three arguments passed:
+oscillator container (a,b,c, depending on form filled), type, and frequency.
 Let's wrap it all into a func */
 
 const Oscillator = function(n, type, frequency) {
@@ -72,3 +73,5 @@ const Oscillator = function(n, type, frequency) {
         }
     isPlaying = !isPlaying;
  }
+
+ //
