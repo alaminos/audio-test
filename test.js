@@ -81,6 +81,7 @@ const view = {
         oscillatorsBox.addEventListener('click',
             (event) => {
                 let target = event.target;
+                console.log(target.indexOf.call(parentElement.children, element)); //not working
                 //get child index of parent- (0,1,2) that very same number will be the n parameter for the creation of the oscillator.
                 //if nodeName === 'BUTTON' --->
     })
