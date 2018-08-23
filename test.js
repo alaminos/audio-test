@@ -55,12 +55,12 @@ so at the end there are three arguments passed:
 oscillator container (a,b,c, depending on form filled), type, and frequency.
 Let's wrap it all into a func */
 
-const Oscillator = function(n, type, frequency) {
+const Oscillator = function(n, type, frequency) { //n number, type string, frequency number
     oscillators[n] = context.createOscillator();
     oscillators[n].type = type;
     oscillators[n].frequency = frequency;
     oscillators[n].start();
-    oscillators[n].isPlaying = false; //in this property we will store if the oscillator is currently playing
+    oscillators[n].isPlaying = false; //in this property we will store the oscillator is current playing status (either playing or not playing)
 }
 
 
