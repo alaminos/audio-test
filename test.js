@@ -75,3 +75,17 @@ const Oscillator = function(n, type, frequency) { //n number, type string, frequ
  }
 
  //
+const view = {
+    setUpEventListener : function() {
+        let oscillatorsBox = document.getElementById('oscillators_box');
+        oscillatorsBox.addEventListener('click',
+            (event) => {
+                let target = event.target;
+                //get child index of parent- (0,1,2) that very same number will be the n parameter for the creation of the oscillator.
+                //if nodeName === 'BUTTON' --->
+    })
+    }
+    
+}
+
+view.setUpEventListener();
