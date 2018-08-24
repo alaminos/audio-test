@@ -47,15 +47,16 @@ const oscillators = [a, b, c];
 * 
  **/
 
-const oscillators = []; //a list of potential oscillators
+const oscillators = []; //an array of potential oscillators
 
-/*user fills form indicating type and frequency,
+/*user fills indicates type and frequency via form,
 clicks on start oscillator,
 so at the end there are three arguments passed:
-oscillator container (a,b,c, depending on form filled), type, and frequency.
+oscillator slot within array (0,1,2, depending on form filled), type, and frequency.
 Let's wrap it all into a func */
 
-const Oscillator = function(n, type, frequency) { //n number, type string, frequency number
+const Oscillator = function(n, type, frequency) { 
+    //n : number, type : string, frequency : number
     oscillators[n] = context.createOscillator();
     oscillators[n].type = type;
     oscillators[n].frequency = frequency;
@@ -65,25 +66,26 @@ const Oscillator = function(n, type, frequency) { //n number, type string, frequ
 
 
  //when user clicks on Play/Stop btn
- const play = function(n) {
+ const play = function(oscillator) {
      if (isPlaying) {
-         oscillators[n].disconnect(context.destination);
+         oscillators[oscillator].disconnect(context.destination);
      } else {
-         oscillators[n].connect(context.destination);
+         oscillators[oscillator].connect(context.destination);
         }
     isPlaying = !isPlaying;
  }
 
- //
+
 const view = {
     setUpEventListener : function() {
         let oscillatorsBox = document.getElementById('oscillators_box');
         oscillatorsBox.addEventListener('click',
             (event) => {
-                let target = event.target;
-                console.log(target.indexOf.call(parentElement.children, element)); //not working
-                //get child index of parent- (0,1,2) that very same number will be the n parameter for the creation of the oscillator.
-                //if nodeName === 'BUTTON' --->
+                let target = event.target
+                ,   parent = target.parentElement
+                ,   granpa = parent.parentElement
+                ,   index = Array.prototype.indexOf.call(granpa.children, parent);
+                // index will be passed to Oscillator function as first parameter
     })
     }
     
