@@ -62,13 +62,14 @@ const Oscillator = function(n, type, frequency) {
 
 
  //when user clicks on Play/Stop btn
- const play = function(oscillator) {
-     if (isPlaying) {
-         oscillators[oscillator].disconnect(context.destination);
+ const play = function(n) {
+     let osc = oscillators[n];
+     if (osc.isPlaying) {
+        osc.disconnect(context.destination);
      } else {
-         oscillators[oscillator].connect(context.destination);
+        osc.connect(context.destination);
         }
-    isPlaying = !isPlaying;
+    osc.isPlaying = !osc.isPlaying;
  }
 
 
@@ -82,11 +83,17 @@ const view = {
                 ,   granpa = parent.parentElement
                 ,   index = Array.prototype.indexOf.call(granpa.children, parent);
                 // index will be passed to Oscillator function as first parameter
-                this.createOscillator(index);
+                
+                //if target class is start:
+                this.startOscillator(index);
+
+                //if target class is play:
+                play(index);
+
     })
     },
 
-    createOscillator : function(n) {
+    startOscillator : function(n) {
         let oscillators = document.getElementsByClassName('oscillator')
         ,   osc         = oscillators[n]
         ,   type        = osc.querySelector('select').value
@@ -95,9 +102,7 @@ const view = {
         //works but it updates constantly, I only want it to run after oscillator creation
 
         Oscillator(n, type, frequency);
-
     }
-    
 }
 
 view.setUpEventListener();
