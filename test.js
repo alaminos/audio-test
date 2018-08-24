@@ -6,10 +6,6 @@ oscillator.type = 'triangle'; //you can change to type square, sine, etc.
 oscillator.frequency = 180;
 oscillator.start();
 
-const oscillator220 = context.createOscillator();
-oscillator220.type = 'square';
-oscillator220.frequency = 220;
-oscillator220.start();
 
 const clickableArea = document.getElementById('buttons');
 
@@ -86,7 +82,20 @@ const view = {
                 ,   granpa = parent.parentElement
                 ,   index = Array.prototype.indexOf.call(granpa.children, parent);
                 // index will be passed to Oscillator function as first parameter
+                this.createOscillator(index);
     })
+    },
+
+    createOscillator : function(n) {
+        let oscillators = document.getElementsByClassName('oscillator')
+        ,   osc         = oscillators[n]
+        ,   type        = osc.querySelector('select').value
+        ,   frequency   = osc.querySelector('input').value;
+        console.log(`type is ${type} and freq is ${frequency}`); 
+        //works but it updates constantly, I only want it to run after oscillator creation
+
+        Oscillator(n, type, frequency);
+
     }
     
 }
