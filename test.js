@@ -26,21 +26,6 @@ clickableArea.addEventListener('click',
         }
 });
 
-
- * All the above is working fine, but 
- * In order to build several oscillators dynamically:
- * Oscillator Class
-
-const oscillators = [a, b, c];
-
- Oscillator = function(oscillators.a, type, frequency) {
-     this.name = this.newName();
-     this.type = type;
-     this.frequency = frequency;
- }
-
-
-* 
  **/
 
 const oscillators = []; //an array of potential oscillators
@@ -84,11 +69,18 @@ const view = {
                 ,   index = Array.prototype.indexOf.call(granpa.children, parent);
                 // index will be passed to Oscillator function as first parameter
                 
-                //if target class is start:
-                this.startOscillator(index);
+                if (target.classList.contains('start')) {
+                    console.log('you have clicked start osc btn');
+                    //if btn clicked by user is a "start oscillator" btn
+                    this.startOscillator(index);
+                } else if (target.classList.contains('play')) {
+                    console.log('you have clicked play osc');
+                    //if the btn clicked is Play:
+                    play(index);
+                }
 
-                //if target class is play:
-                play(index);
+                
+                
 
     })
     },
