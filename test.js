@@ -36,6 +36,7 @@ so at the end there are three arguments passed:
 oscillator slot within array (0,1,2, depending on form filled), type, and frequency.
 Let's wrap it all into a func */
 
+/* commenting out temporarily
 const Oscillator = function(n, type, frequency) { 
     //n : number, type : string, frequency : number
     oscillators[n] = context.createOscillator();
@@ -43,6 +44,16 @@ const Oscillator = function(n, type, frequency) {
     oscillators[n].frequency = frequency;
     oscillators[n].start();
     oscillators[n].isPlaying = false; //in this property we will store the oscillator is current playing status (either playing or not playing)
+}
+*/
+
+const Oscillator = function(type, frequency) { 
+    //n : number, type : string, frequency : number
+    osc = context.createOscillator();
+    osc.type = type;
+    osc.frequency = frequency;
+    osc.start();
+    osc.isPlaying = false; //in this property we will store the oscillator is current playing status (either playing or not playing)
 }
 
 
@@ -78,22 +89,18 @@ const view = {
                     //if the btn clicked is Play:
                     play(index);
                 }
-
-                
-                
-
     })
     },
 
     startOscillator : function(n) {
-        let oscillators = document.getElementsByClassName('oscillator')
-        ,   osc         = oscillators[n]
+        let osc_elements = document.getElementsByClassName('oscillator')
+        ,   osc         = osc_elements[n]
         ,   type        = osc.querySelector('select').value
         ,   frequency   = osc.querySelector('input').value;
         console.log(`type is ${type} and freq is ${frequency}`); 
         //works but it updates constantly, I only want it to run after oscillator creation
 
-        Oscillator(n, type, frequency);
+        oscillators[n] = new Oscillator(type, frequency);
     }
 }
 
