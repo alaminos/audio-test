@@ -48,12 +48,12 @@ const Oscillator = function(n, type, frequency) {
 */
 
 const Oscillator = function(type, frequency) { 
-    //n : number, type : string, frequency : number
-    osc = context.createOscillator();
+    let osc = context.createOscillator();
     osc.type = type;
     osc.frequency = frequency;
     osc.start();
-    osc.isPlaying = false; //in this property we will store the oscillator is current playing status (either playing or not playing)
+    this.isPlaying = false; //in this property we will store the oscillator is current playing status (either playing or not playing)
+    return osc;
 }
 
 
@@ -100,7 +100,7 @@ const view = {
         console.log(`type is ${type} and freq is ${frequency}`); 
         //works but it updates constantly, I only want it to run after oscillator creation
 
-        oscillators[n] = new Oscillator(type, frequency);
+        oscillators[n] = Oscillator(type, frequency);
     }
 }
 
